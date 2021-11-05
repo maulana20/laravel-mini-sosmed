@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\PostController;
 use App\Http\Controllers\Api\FriendshipController;
+use App\Http\Controllers\Api\LikeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,5 +32,7 @@ Route::middleware('auth:api')->group(function () {
     Route::post('friendship/accept/{user}', [FriendshipController::class, 'accept'])->name('friendship.accept');
     
     Route::post('friendship/remove/{user}', [FriendshipController::class, 'remove'])->name('friendship.remove');
+    
+    Route::post('like/send/{post}', [LikeController::class, 'send'])->name('like.send');
     
 });

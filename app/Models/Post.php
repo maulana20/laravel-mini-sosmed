@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Overtrue\LaravelLike\Traits\Likeable;
 
 class Post extends Model
 {
-    use HasFactory;
+    use HasFactory, Likeable;
     
     protected $with = [
         'user'
@@ -18,7 +19,7 @@ class Post extends Model
     ];
     
     protected $appends = [
-        'published'
+        'published', 'has_like'
     ];
     
     public function user()
@@ -29,5 +30,20 @@ class Post extends Model
     public function getPublishedAttribute()
     {
         return $this->created_at->diffForHumans();
+    }
+    
+    public function getHasLikeAttribute()
+    {
+        return $this->isLikedBy(auth()->user());
+    }
+    
+    public function scopeFriend($query)
+    {
+        $user = auth()->user();
+        
+        $userIds = $user->friends()->pluck('id');
+        $userIds[] = $user->id;
+        
+        $query->whereIn('user_id', $userIds);
     }
 }

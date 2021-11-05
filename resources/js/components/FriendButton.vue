@@ -90,6 +90,7 @@
                         text: 'Friend has removed.',
                         timeout: 3000
                     })
+                    
                     this.loading = false
                 })
                 

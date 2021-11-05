@@ -32,6 +32,8 @@ Vue.component('notification', require('./components/Notification.vue').default);
 
 Vue.component('unread-notif', require('./components/UnreadNotification.vue').default);
 
+Vue.component('like', require('./components/Like.vue').default);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

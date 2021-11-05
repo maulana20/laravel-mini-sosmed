@@ -1,7 +1,7 @@
 <template>
     <li>
         <a id="unread-notif-link" href="#">
-            Unread <span class="badge">{{ allNotificationCount }}</span>
+            Unread <span class="badge badge-secondary">{{ allNotificationCount }}</span>
         </a>
     </li>
 </template>

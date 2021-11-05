@@ -11,11 +11,7 @@ class PostController extends Controller
 {
     public function index()
     {
-        $user = auth()->user();
-        $userIds = $user->friends()->pluck('id');
-        $userIds[] = $user->id;
-
-        return Post::whereIn('user_id', $userIds)->latest()->get();
+        return Post::friend()->withCount('likers')->latest()->get();
     }
     
     public function store(StoreRequest $request)

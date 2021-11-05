@@ -23,6 +23,9 @@ export const store = new Vuex.Store({
         addNotification(state, notif) {
             state.notifications.push(notif)
         },
+        resetPost(state) {
+            Object.assign(state, { posts: [] })
+        },
         pushPost(state, posts) {
             state.posts = state.posts.concat(posts)
         },
