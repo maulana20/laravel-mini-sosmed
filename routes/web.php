@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,5 +32,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/notification', [NotificationController::class, 'index'])->name('notification.index');
     
     Route::get('/notification/unread', [NotificationController::class, 'unread'])->name('notification.unread');
+    
+    Route::resource('post', PostController::class)->only('show');
     
 });

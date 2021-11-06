@@ -10,7 +10,7 @@
                     {{ post.content }}
                 </div>
                 <div class="card-footer">
-                    <like :post="post" v-on:like-send="getFeed"></like>
+                    <like :post="post"></like>
                 </div>
             </div>
         </div>
@@ -26,8 +26,6 @@
         },
         methods: {
             getFeed: function() {
-                this.$store.commit('resetPost')
-                
                 axios.get(baseURL + '/api/post').then((res) => {
                     this.$store.commit('pushPost', res.data)
                 })

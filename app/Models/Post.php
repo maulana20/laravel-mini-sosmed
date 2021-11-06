@@ -19,7 +19,7 @@ class Post extends Model
     ];
     
     protected $appends = [
-        'published', 'has_like'
+        'published', 'has_like', 'likers_count'
     ];
     
     public function user()
@@ -35,6 +35,11 @@ class Post extends Model
     public function getHasLikeAttribute()
     {
         return $this->isLikedBy(auth()->user());
+    }
+    
+    public function getLikersCountAttribute()
+    {
+        return $this->likers()->count();
     }
     
     public function scopeFriend($query)

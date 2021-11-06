@@ -14,11 +14,16 @@
             return {
             }
         },
-        props: ['post'],
+        props: [
+            'post'
+        ],
         methods: {
             sendLike: function(post) {
                 axios.post(baseURL + '/api/like/send/' + post.id).then((res) => {
-                    this.$emit('like-send')
+                    this.$store.commit('updatePost', {
+                        id: post.id,
+                        data: res.data
+                    });
                 })
             }
         }

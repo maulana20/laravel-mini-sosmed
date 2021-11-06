@@ -20,6 +20,8 @@ class LikeController extends Controller
             $post->user->notify(new PostGotLiked($post, $user));
         }
         
-        return response()->json(['status' => 'done'], 200);
+        $post->load('user');
+        
+        return response()->json($post->toArray(), 201);
     }
 }
