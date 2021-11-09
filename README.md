@@ -12,8 +12,8 @@ Sosial media mini untuk latihan notifikasi realtime laravel dengan pusher
 3.  Buat **.env** dari file **.env.example**
 4.  `$ php artisan key:generate`
 5.  `$ php artisan storage:link`
-6.  `$ php artisan passport:install` (fresh api token)
-7.  `$ php artisan migrate`
+6.  `$ php artisan migrate`
+7.  `$ php artisan passport:install` **fresh api token**
 8.  `$ php artisan serve`
 
 ### note
